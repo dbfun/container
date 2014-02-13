@@ -1,8 +1,8 @@
 <?
-abstract class PackageAlgo {
+abstract class AlgoPackage {
   public $packageUnit, $name;
   public abstract function process(OrderUnit $orderUnit);
-  public function check(OrderUnit $orderUnit) {
+  final public function check(OrderUnit $orderUnit) {
     $ouWeight = $orderUnit->totalWeight;
     $puWeight = $this->packageUnit->totalWeight;
     if (abs($ouWeight - $puWeight) >= 0.001) { // Float problem
@@ -19,7 +19,7 @@ abstract class PackageAlgo {
     return true;
     }
     
-  public function statistics() {
+  final public function statistics() {
     echo $this->packageUnit->count;
     }
   }

@@ -19,6 +19,7 @@ class OrderUnit implements Iterator {
   public function __get($name) {
     switch($name) {
       case 'totalWeight': return $this->totalWeight;
+      case 'data': return $this->data;
       default: trigger_error("No such property", E_USER_ERROR); return null;
       }
     }

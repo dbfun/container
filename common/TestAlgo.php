@@ -1,6 +1,6 @@
 <?
-class TestAlgo {
-  public function __construct(PackageAlgo $algo) {
+final class TestAlgo {
+  final public function __construct(AlgoPackage $algo) {
     $orderUnit = new OrderUnit();
     echo $algo->name.PHP_EOL;
     for ($numWeights = 3; $numWeights <=10; $numWeights++) {
@@ -16,7 +16,7 @@ class TestAlgo {
         $totalPackUnit++;
         $totalPackCount += $algo->packageUnit->count;
         }
-      echo "Average packs per unit: ".number_format($totalPackCount / $totalPackUnit, 3)." - ".$numWeights." wights".PHP_EOL;
+      echo "Average packs per unit: ".number_format($totalPackCount / $totalPackUnit, 3)." - ".$numWeights." weights".PHP_EOL;
       }
     }
   }
