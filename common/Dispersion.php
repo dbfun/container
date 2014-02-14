@@ -4,7 +4,9 @@ class Dispersion {
   
   public static function _() {
     static $instance;
-    return is_object($instance) ? $instance : new self();
+    if (is_object($instance)) return $instance;
+    $instance = new self();
+    return $instance;
     }
   
   private $sum, $count, $avg, $dispersion;
