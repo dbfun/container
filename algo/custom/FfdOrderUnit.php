@@ -1,7 +1,7 @@
 <?
 class FfdOrderUnit extends OrderUnit {
   public function fill(array $data) {
-    arsort($data);
+    rsort($data);
     parent::fill($data);
     }
   }

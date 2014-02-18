@@ -13,19 +13,20 @@ final class TestAlgo {
     }
     
   private function test(WeightSamples $samples, OrderUnit $orderUnit, AlgoPackage $algo, $name) {
-    $totalPackCount = 0;
-    $totalPackUnit = 0;
-    $totalDisp = 0;
+    $packUnitCount = array();
     foreach ($samples as $weights) {
       $orderUnit->fill($weights);
       $algo->process($orderUnit);
       $algo->check($orderUnit);
       
       // Статистика
-      $totalPackUnit++;
-      $totalPackCount += $algo->packageUnit->count;
-      $totalDisp += Dispersion::_()->put($orderUnit->data)->dispersion;
+      $packUnitCount[] = $algo->packageUnit->count;
       }
-    echo "Average packs per unit: ".number_format($totalPackCount / $totalPackUnit, 3).", dispersion: ".$totalDisp." - ".$name.PHP_EOL;
+      
+    Math::_()->put($packUnitCount);
+    echo "Average packs per unit: ".number_format(Math::_()->avg(), 3)
+      ." mediana: ".Math::_()->mediana()." "
+      ." moda: ".Math::_()->moda()." "
+      ." - ".$name.PHP_EOL;
     }
   }
